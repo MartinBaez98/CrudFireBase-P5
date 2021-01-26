@@ -24,19 +24,43 @@
       </ion-fab-list>
   </ion-fab>
   <ion-card style="text-align: center;">
-      <ion-card-header>
-          <ion-card-subtitle>{{student.name}}</ion-card-subtitle>
-          <ion-card-title>{{student.controlnumber}}</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-          <p>CURP <strong>{{student.curp}}</strong> </p>
-          <p>EDAD <strong>{{student.age}}</strong> </p>
-          <ion-chip color="secondary" *ngIf="student.active" class="ion-float-center">
-              <ion-label>Activo</ion-label>
-          </ion-chip>
-          <ion-chip color="danger" *ngIf="!student.active" class="ion-float-center">
-              <ion-label>Inactivo</ion-label>
-          </ion-chip>
-      </ion-card-content>
+    <form [formGroup]="myForm">
+
+        <ion-label style="margin-right: 22%;"><strong>Nombre:</strong></ion-label>
+        <ion-row>
+            <ion-input type="text" values="" formControlName="name" disabled="{{nameFlag}}"></ion-input>
+            <ion-button color="dark" style="font-size: 100%; margin-right: 20%;" (click)="nameFlag=false">
+                <ion-icon name="create"></ion-icon>
+            </ion-button>
+        </ion-row>
+        <ion-label style="margin-right: 22%;"> <strong>Número de control:</strong> </ion-label>
+        <ion-row>
+            <ion-input type="text" values="" formControlName="controlnumber" disabled="{{ncFlag}}"></ion-input>
+            <ion-button color="dark" style="font-size: 100%; margin-right: 20%;" (click)="ncFlag=false">
+                <ion-icon name="create"></ion-icon>
+            </ion-button>
+        </ion-row>
+        <ion-label style="margin-right: 22%;"> <strong>CURP:</strong> </ion-label>
+        <ion-row>
+            <ion-input type="text" values="" formControlName="curp" disabled="{{curpFlag}}"></ion-input>
+            <ion-button color="dark" style="font-size: 100%; margin-right: 20%;" (click)="curpFlag=false">
+                <ion-icon name="create"></ion-icon>
+            </ion-button>
+        </ion-row>
+        <ion-label style="margin-right: 22%;"><strong>Edad:</strong></ion-label>
+        <ion-row>
+            <ion-input type="text" values="" formControlName="age" disabled="{{ageFlag}}"></ion-input>
+            <ion-button color="dark" style="font-size: 100%; margin-right: 20%;" (click)="ageFlag=false">
+                <ion-icon name="create"></ion-icon>
+            </ion-button>
+        </ion-row>
+        <ion-label style="margin-right: 22%;"><strong>Estatus:</strong></ion-label>
+        <ion-row style="margin-left: 35%;">
+            <ion-toggle formControlName="active" color="secondary" checked="{{student.active}}"></ion-toggle>
+        </ion-row>
+        <ion-button expand=" block " color="secondary" (click)="update()">
+            Actualizar
+        </ion-button>
+    </form>
   </ion-card>
 </ion-content>
