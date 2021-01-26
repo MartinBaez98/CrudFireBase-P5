@@ -76,4 +76,15 @@ export class DetailPage implements OnInit {
     });
   }
 
+  delete(id:string){
+    this.service.deleteStudent(id);
+    this.presentToast("Estudiante eliminado");
+    this.router.navigate(['/']);
+  }
+
+  toHome(){
+    this.router.navigate(['/']);
+  }
+
+
 }

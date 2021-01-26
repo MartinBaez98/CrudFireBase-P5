@@ -17,4 +17,8 @@ export class EstudianteService {
   updateStudent(student: Estudiante, id:String){
     this.firestore.doc('estudiante/'+id).update(student);
   }
+
+  deleteStudent(id:string){
+    this.firestore.doc('estudiante/'+id).delete();
+  }
 }
